@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+{% block title %}
+	{{ parent() }}
+	My title
+{% endblock %}
+{% block body %}
+
+	<div class="container">
+		<h1 class="my-2 text-center">List from the controller</h1>
+
+		<ul class="list-group">
+			{% for item in my_array %}
+				<li class="list-group-item">{{ item }}</li>
+
+			{% endfor %}
+		</ul>
+
+		<h1 class="my-2 text-center">List 2 from the controller</h1>
+
+		<ul class="list-group">
+			{% for key, item in assoc_array %}
+				<li class="list-group-item">{{ key }} = {{ item }}</li>
+
+			{% endfor %}
+		</ul>
+
+        <p>{{ now | date('d/m/Y H:i:s' ) }}<p>
+
+        <p>
+            <img src="{{ asset('img/image.jpeg')}}" alt="">
+        </p>
+
+        <p>
+            <a href="{{url('homepage.hello', {name:'world'}) }}">Hello world</a>
+        </p>
+	</div>
+
+{% endblock %} 

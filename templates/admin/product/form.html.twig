@@ -1,0 +1,42 @@
+{% extends "base.html.twig" %}
+
+{% block body %}
+    <div class="row">
+        <div class="col">
+            <h2 class="text-center">Products Management</h2>
+
+{#             <form novalidate
+ #}
+            {{ form_start(form, {attr: {novalidate: 'novalidate'}}) }}
+                <p>
+                    {{ form_label(form.name, 'Name : ') }}
+                    {{ form_widget(form.name) }}
+                    {{ form_errors(form.name) }}
+                </p>
+                <p>
+                    {{ form_label(form.price, 'Price : ') }}
+                    {{ form_widget(form.price) }}
+                    {{ form_errors(form.price) }}
+                </p>
+                <p>
+                    {{ form_label(form.description, 'Description : ') }}
+                    {{ form_widget(form.description) }}
+                    {{ form_errors(form.description) }}
+                </p>
+                <p>
+                    {{ form_label(form.quantity, 'Quantity : ') }}
+                    {{ form_widget(form.quantity) }}
+                    {{ form_errors(form.quantity) }}
+                </p>
+                <p>
+                    {{ form_label(form.image, 'Image : ') }}
+                    {{ form_widget(form.image) }}
+                    {{ form_errors(form.image) }}
+                </p>
+                <p>
+                    <input type="submit" class="btn btn-primary" >
+                </p>
+            {{ form_end(form) }}
+        </div>
+    </div>
+{% endblock %}

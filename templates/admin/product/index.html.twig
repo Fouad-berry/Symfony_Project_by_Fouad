@@ -1,0 +1,49 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="row">
+        <div class="col">
+            <h2 class="text-center">Product Management</h2>
+
+{#                 //message de confirmation stocké en session : message flash
+ #}
+                    {% for notice in app.flashes('notice') %}
+                        <p class="alert alert-success">
+                            {{ notice }}
+                        </p>
+                    {% endfor %}
+            <p>
+                <a href="{{ url('admin.product.form')}}" class="btn btn-info">Add</a>
+            </p>
+            <table class="table table-striped">
+                <tr>
+                    <th>Image</th>
+                    <th>Name</th>
+                    <th>Price</th>
+                    <th>Quantity</th>
+                    <th></th>
+                </tr>
+                {% for product in products %}
+                    <tr>
+                        <td>
+                            <img style="width:100px; height:100px;" src="{{ asset('img/' ~ product.image) }}" class="img-fluid" alt="">
+                        </td>
+                        <td>
+                            {{product.name}}
+                        </td>
+                        <td>
+                            {{product.price}}
+                        </td>
+                        <td>
+                            {{product.quantity}}
+                        </td>
+                        <td>
+                            <a href="{{ url('admin.product.update', { id: product.id }) }}" class="btn btn-warning">Edit</a> &emsp;
+                            <a href="{{ url('admin.product.delete', { id: product.id }) }}" class="btn btn-danger">Delete</a>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </table>
+        </div>
+    </div>
+{% endblock %}
